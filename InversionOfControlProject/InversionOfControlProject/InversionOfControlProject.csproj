@@ -44,7 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IContainer.cs" />
+    <Compile Include="Containers\Container.cs" />
+    <Compile Include="Containers\Interface\IContainer.cs" />
     <Compile Include="Lifestyle\LifestyleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

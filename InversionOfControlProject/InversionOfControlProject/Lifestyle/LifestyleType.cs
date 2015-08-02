@@ -11,8 +11,4 @@ namespace InversionOfControlProject.Lifestyle
         Transient,
         Singleton
     };
-    public class LifestyleType
-    {
-        public LifestyleTypeEnum Type { get; set; }
-    }
 }
