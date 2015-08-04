@@ -10,6 +10,6 @@ namespace InversionOfControlProject.Containers.Interface
     public interface IContainer
     {
         void Register<I,T>();
-        void Resolve<I>();
+        I Resolve<I>();
     }
 }

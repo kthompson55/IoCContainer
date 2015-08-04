@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Containers\Container.cs" />
+    <Compile Include="Containers\Exceptions\TypeAlreadyRegisteredException.cs" />
+    <Compile Include="Containers\Exceptions\TypeNotRegisteredException.cs" />
     <Compile Include="Containers\Interface\IContainer.cs" />
     <Compile Include="Lifestyle\LifestyleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

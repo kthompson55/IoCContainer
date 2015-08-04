@@ -76,6 +76,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InversionOfControlProject\InversionOfControlProject.csproj">
+      <Project>{4fa3ed57-198c-45a6-994e-5bedc91334e2}</Project>
+      <Name>InversionOfControlProject</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
