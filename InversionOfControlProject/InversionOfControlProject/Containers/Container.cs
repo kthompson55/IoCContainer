@@ -8,16 +8,16 @@ using InversionOfControlProject.Lifestyle;
 
 namespace InversionOfControlProject.Containers
 {
-    class Container : IContainer
+    public class Container : IContainer
     {
-        private Dictionary<object, List<object>> register;
-
-        public void Register(LifestyleTypeEnum lifestyle, object injected, params object[] injector)
+        // Registers type with object
+        public void Register<I,T>()
         {
             
         }
 
-        public void Resolve(params object[] injectors)
+        // Resolves provided type
+        public void Resolve<I>()
         {
 
         }

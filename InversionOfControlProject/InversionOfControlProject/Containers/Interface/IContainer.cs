@@ -9,7 +9,7 @@ namespace InversionOfControlProject.Containers.Interface
 {
     public interface IContainer
     {
-        void Register(LifestyleTypeEnum lifeStyle,  object injected, params object[] injectionType);
-        void Resolve(params object[] injectedObjects);
+        void Register<I,T>();
+        void Resolve<I>();
     }
 }

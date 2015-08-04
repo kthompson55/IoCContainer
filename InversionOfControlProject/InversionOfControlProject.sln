@@ -5,6 +5,13 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InversionOfControlProject", "InversionOfControlProject\InversionOfControlProject.csproj", "{4FA3ED57-198C-45A6-994E-5BEDC91334E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTests", "NUnitTests\NUnitTests.csproj", "{1C4A7B34-2E7C-4F33-B51E-904A59775188}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{10D67AF6-F1B3-4E93-912D-2E3F00165E3B}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +22,10 @@ Global
 		{4FA3ED57-198C-45A6-994E-5BEDC91334E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FA3ED57-198C-45A6-994E-5BEDC91334E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FA3ED57-198C-45A6-994E-5BEDC91334E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C4A7B34-2E7C-4F33-B51E-904A59775188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C4A7B34-2E7C-4F33-B51E-904A59775188}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C4A7B34-2E7C-4F33-B51E-904A59775188}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C4A7B34-2E7C-4F33-B51E-904A59775188}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
