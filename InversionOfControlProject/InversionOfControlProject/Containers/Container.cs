@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+
 using InversionOfControlProject.Containers.Interface;
 using InversionOfControlProject.Lifestyle;
 using InversionOfControlProject.Containers.Exceptions;
-using System.Reflection;
 
 namespace InversionOfControlProject.Containers
 {
@@ -36,23 +37,23 @@ namespace InversionOfControlProject.Containers
             {
                 throw new TypeNotRegisteredException(typeof(I));
             }
-            return (I)RecursiveResolve<I>();
+            return (I)RecursiveResolve(registerMap[typeof(I)]);
         }
 
         // Resolves provided type
-        private object RecursiveResolve<I>()
+        private object RecursiveResolve(Type toBeResolved)
         {
-            // Find out what parameters we need for the object
-            ConstructorInfo typeConstructor = typeof(I).GetConstructors().First<ConstructorInfo>();
-            ParameterInfo[] typeParameters = typeConstructor.GetParameters();
+            // Find out what parameters needed for the object
+            ConstructorInfo typeConstructor = toBeResolved.GetConstructors().First<ConstructorInfo>();
+            List<ParameterInfo> typeParameters = typeConstructor.GetParameters().ToList();
             List<object> resolvedParameters = new List<object>();
 
             // Iterate through parameters
             foreach (ParameterInfo parameter in typeParameters)
             {
                 Type parType = parameter.ParameterType;
-                object resolvedParameter = RecursiveResolve<parType>();
-                resolvedParameters.Add(resolvedParameters);
+                object resolvedParameter = RecursiveResolve(parType);
+                resolvedParameters.Add(resolvedParameter);
             }
 
             return typeConstructor.Invoke(resolvedParameters.ToArray());
