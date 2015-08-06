@@ -24,5 +24,15 @@ namespace InversionOfControlProject.Lifestyle
             ResolvedType = resolvedType;
             Lifestyle = lifetime;
         }
+
+        public bool Equals(ResolvedTypeLifestyle obj)
+        {
+            return obj.ResolvedType == ResolvedType;
+        }
+
+        public override int GetHashCode()
+        {
+            return Instance.GetHashCode();
+        }
     }
 }

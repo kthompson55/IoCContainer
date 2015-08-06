@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using InversionOfControlProject.Lifestyle;
 
-namespace InversionOfControlProject
+namespace InversionOfControlProject.DummyObjects
 {
     public class DummyComparable : IComparable, ILifestyle
     {
