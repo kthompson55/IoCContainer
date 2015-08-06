@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace InversionOfControlProject.Lifestyle
 {
-    public enum LifestyleType
+    interface ILifestyle
     {
-        Transient, // new up every resolve
-        Static // only ever have one in the container
+        DateTime GetCreatedOn();
     }
 }

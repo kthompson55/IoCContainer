@@ -70,17 +70,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ContainerTests.cs" />
+    <Compile Include="ContainerTests\ContainerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DummyComparable\DummyObjects.csproj">
-      <Project>{e0bc2525-b6e9-43c3-9177-361cb3b6718e}</Project>
-      <Name>DummyObjects</Name>
-    </ProjectReference>
     <ProjectReference Include="..\InversionOfControlProject\InversionOfControlProject.csproj">
       <Project>{4fa3ed57-198c-45a6-994e-5bedc91334e2}</Project>
       <Name>InversionOfControlProject</Name>

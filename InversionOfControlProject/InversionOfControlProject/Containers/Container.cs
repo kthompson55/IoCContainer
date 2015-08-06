@@ -13,11 +13,11 @@ namespace InversionOfControlProject.Containers
 {
     public class Container : IContainer
     {
-        Dictionary<Type, Type> registerMap;
+        Dictionary<Type, ResolvedTypeLifestyle> registerMap;
 
         public Container()
         {
-            registerMap = new Dictionary<Type, Type>();
+            registerMap = new Dictionary<Type, ResolvedTypeLifestyle>();
         }
 
         // Registers type with object
@@ -27,7 +27,17 @@ namespace InversionOfControlProject.Containers
             {
                 throw new TypeAlreadyRegisteredException(typeof(I));
             }
-            registerMap.Add(typeof(I), typeof(T));
+            Register<I, T>(LifestyleType.Transient);
+        }
+
+        public void Register<I,T>(LifestyleType lifetime)
+        {
+            if (registerMap.ContainsKey(typeof(I)))
+            {
+                throw new TypeAlreadyRegisteredException(typeof(I));
+            }
+            ResolvedTypeLifestyle resolvedType = new ResolvedTypeLifestyle(typeof(T), lifetime);
+            registerMap.Add(typeof(I), resolvedType);
         }
 
         // Resolves provided Type
@@ -37,14 +47,22 @@ namespace InversionOfControlProject.Containers
             {
                 throw new TypeNotRegisteredException(typeof(I));
             }
-            return (I)RecursiveResolve(registerMap[typeof(I)]);
+            return (I)RecursiveResolve(typeof(I));
         }
 
         // Resolves provided type
         private object RecursiveResolve(Type toBeResolved)
         {
+            ResolvedTypeLifestyle resolvedType = registerMap[toBeResolved];
+
+            // Check if container-static object already has an instance
+            if(resolvedType.Lifestyle == LifestyleType.Static && resolvedType.Instance != null)
+            {
+                return resolvedType.Instance;
+            }
+
             // Find out what parameters needed for the object
-            ConstructorInfo typeConstructor = toBeResolved.GetConstructors().First<ConstructorInfo>();
+            ConstructorInfo typeConstructor = resolvedType.ResolvedType.GetConstructors().First<ConstructorInfo>();
             List<ParameterInfo> typeParameters = typeConstructor.GetParameters().ToList();
             List<object> resolvedParameters = new List<object>();
 
@@ -56,7 +74,9 @@ namespace InversionOfControlProject.Containers
                 resolvedParameters.Add(resolvedParameter);
             }
 
-            return typeConstructor.Invoke(resolvedParameters.ToArray());
+            object resolvedObject = typeConstructor.Invoke(resolvedParameters.ToArray());
+            resolvedType.Instance = resolvedObject;
+            return resolvedObject;
         }
     }
 }
