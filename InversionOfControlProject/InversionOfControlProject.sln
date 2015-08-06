@@ -12,8 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{10D67A
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyObjects", "DummyComparable\DummyObjects.csproj", "{E0BC2525-B6E9-43C3-9177-361CB3B6718E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,10 +26,6 @@ Global
 		{1C4A7B34-2E7C-4F33-B51E-904A59775188}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C4A7B34-2E7C-4F33-B51E-904A59775188}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C4A7B34-2E7C-4F33-B51E-904A59775188}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E0BC2525-B6E9-43C3-9177-361CB3B6718E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0BC2525-B6E9-43C3-9177-361CB3B6718E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E0BC2525-B6E9-43C3-9177-361CB3B6718E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E0BC2525-B6E9-43C3-9177-361CB3B6718E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
