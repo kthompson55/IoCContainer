@@ -49,6 +49,7 @@
     <Compile Include="Containers\Exceptions\TypeNotRegisteredException.cs" />
     <Compile Include="Containers\Interface\IContainer.cs" />
     <Compile Include="DummyObjects\DummyComparable.cs" />
+    <Compile Include="DummyObjects\DummyComparableHolder.cs" />
     <Compile Include="Lifestyle\Interface\ILifestyle.cs" />
     <Compile Include="Lifestyle\LifestyleType.cs" />
     <Compile Include="Lifestyle\ResolvedTypeLifestyle.cs" />

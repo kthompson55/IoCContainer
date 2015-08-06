@@ -3,6 +3,7 @@
 using InversionOfControlProject;
 using InversionOfControlProject.Containers;
 using InversionOfControlProject.Containers.Exceptions;
+using InversionOfControlProject.DummyObjects;
 using InversionOfControlProject.Lifestyle;
 
 using NUnit.Framework;
@@ -77,6 +78,30 @@ namespace NUnitTests
             DummyComparable instance2 = container.Resolve<IComparable>() as DummyComparable;
 
             Assert.AreSame(instance1, instance2);
+        }
+
+        [Test]
+        public void TestNestedResolveStatic()
+        {
+            Container container = new Container();
+            container.Register<IComparable, DummyComparable>(LifestyleType.Static);
+            DummyComparable comparable1 = container.Resolve<IComparable>() as DummyComparable;
+            container.Register<Object, DummyComparableHolder>();
+            DummyComparableHolder holder = container.Resolve<Object>() as DummyComparableHolder;
+
+            Assert.AreSame(comparable1, holder.Dummy);
+        }
+
+        [Test]
+        public void TestNestedResolveTransient()
+        {
+            Container container = new Container();
+            container.Register<IComparable, DummyComparable>();
+            DummyComparable comparable1 = container.Resolve<IComparable>() as DummyComparable;
+            container.Register<Object, DummyComparableHolder>();
+            DummyComparableHolder holder = container.Resolve<Object>() as DummyComparableHolder;
+
+            Assert.AreSame(comparable1, holder.Dummy);
         }
     }
 }

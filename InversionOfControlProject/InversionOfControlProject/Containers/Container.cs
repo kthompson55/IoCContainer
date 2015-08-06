@@ -53,12 +53,35 @@ namespace InversionOfControlProject.Containers
         // Resolves provided type
         private object RecursiveResolve(Type toBeResolved)
         {
-            ResolvedTypeLifestyle resolvedType = registerMap[toBeResolved];
+            ResolvedTypeLifestyle resolvedType = null;
+            try
+            {
+                resolvedType = registerMap[toBeResolved];
+            }
+            catch
+            {
+                resolvedType = new ResolvedTypeLifestyle(toBeResolved);
+                resolvedType.Lifestyle = LifestyleType.Static;
+                foreach(Type curType in registerMap.Keys)
+                {
+                    if(registerMap[curType].Equals(resolvedType))
+                    {
+                        resolvedType.Instance = registerMap[curType].Instance;
+                        break;
+                    }
+                }
+            }
 
             // Check if container-static object already has an instance
             if(resolvedType.Lifestyle == LifestyleType.Static && resolvedType.Instance != null)
             {
-                return resolvedType.Instance;
+                foreach(ResolvedTypeLifestyle currentType in registerMap.Values)
+                {
+                    if (currentType.Equals(resolvedType))
+                    {
+                        return resolvedType.Instance;
+                    }
+                }
             }
 
             // Find out what parameters needed for the object
